@@ -47,3 +47,22 @@ module "bastion" {
   network_name = module.google_networks.network.name
   subnet_name  = module.google_networks.subnet.name
 }
+
+module "bigquery_dataset" {
+  source = "./bigquery_dataset"
+  
+}
+
+module "dataset_roles" {
+  source = "./dataset_roles"
+
+  bigquery_role_assignment = {
+    vmo2_tech_test = {
+      role = "roles/bigquery.dataEditor"
+      user = "cloud_user_p_c66e52da@linuxacademygclabs.com"
+    }
+  }
+# dataset_id = google_bigquery_dataset.vmo2_tech_test.dataset_id
+
+}
+

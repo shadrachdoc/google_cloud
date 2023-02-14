@@ -14,5 +14,6 @@ resource "google_bigquery_dataset_access" "dataset_access" {
   dataset_id = var.dataset_id
   role = each.value.role
   user_by_email = each.value.user
+
 }
 
